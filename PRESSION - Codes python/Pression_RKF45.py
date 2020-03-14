@@ -101,7 +101,7 @@ Ts, Ps = RKF45('dP', P_init, angles, step)
 plt.plot(Ts, Ps, '-r')
 plt.title('Pressure in an engine cylinder', fontsize=18)
 plt.xlabel('Angles   [RAD]', fontsize=14)
-plt.ylabel('Pressure   [BAR]', fontsize=14)
+plt.ylabel('Pressure   [Pa]', fontsize=14)
 #plt.savefig('Pressure.png', bbox_inches='tight')
 plt.show()
 
