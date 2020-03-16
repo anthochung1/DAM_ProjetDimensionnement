@@ -53,7 +53,9 @@ def RKF45(func, y_init, x_range, h):
         k6 = feval(func, x[i] + (7 * h / 8), y[i] + k1 * (1631 * h / 55296) + k2 * (175 * h / 512)
                    + k3 * (575 * h / 13824) + k4 * (44275 * h / 110592) + k5 * (253 * h / 4096))
 
-        y[i + 1] = y[i] + h * (37 * k1 / 378 + 250 * k3 / 621 + 125 * k4 / 594 + 512 * k6 / 1771)
+        plus = h * (37 * k1 / 378 + 250 * k3 / 621 + 125 * k4 / 594 + 512 * k6 / 1771)
+        #print (plus)
+        y[i + 1] = y[i] + plus
         x[i + 1] = x[i] + h
 
     return x, y
@@ -72,10 +74,10 @@ HEAT_CAPACITY_gasoline = 2800  # [kJ/kg]
 HEAT_CAPACITY_diesel = 2800  # [kJ/kg]
 Q_tot = HEAT_CAPACITY_gasoline * 0.004 / 1000  # [J]
 
-START_ANGLE = np.pi / 12  # in interval [15°,40°]
+START_ANGLE = np.pi/9  # in interval [15°,40°]
 COMBUSTION_DURATION = np.pi / 6  # between 40° and 70°
 
-ENGINE_DISPLACEMENT = 6e-4  # [m^3]
+ENGINE_DISPLACEMENT = 0.001  # [m^3]
 
 
 ### Function considered : PRESSURE DIFFERENTIAL EVOLUTION ###
@@ -93,16 +95,16 @@ def dP(T, P_T):
 ### EVOLUTION OF PRESSURE ###
 
 step = 0.02
-angles = np.linspace(-2 * np.pi, 2 * np.pi, 400)
-P_init = 200000
+angles = np.linspace(-np.pi, np.pi, 400)
+P_init = 101325
 
 Ts, Ps = RKF45('dP', P_init, angles, step)
 
-plt.plot(Ts, Ps, '-r')
+plt.plot(Ts, Ps/101325, '-r')
 plt.title('Pressure in an engine cylinder', fontsize=18)
-plt.xlabel('Angles   [RAD]', fontsize=14)
-plt.ylabel('Pressure   [Pa]', fontsize=14)
-#plt.savefig('Pressure.png', bbox_inches='tight')
+plt.xlabel('Angles   [Rad]', fontsize=14)
+plt.ylabel('Pressure   [Bar]', fontsize=14)
+plt.savefig('Pressure.png', bbox_inches='tight')
 plt.show()
 
 
