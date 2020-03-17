@@ -1,0 +1,23 @@
+Document rassemblant la recherche effectuée pour mener à bien notre travail de dimensionnement d'une bielle dans un moteur.
+
+-Recherche portant sur la quantité de combustible injectée dans le cylindre à chaque cycle.---------------------------------------------------------
+
+	Première piste : Décrire la réaction chimique de combustion de l'hydrocarbure. Par stoechiométrie et en sachant la quantité d'air contenue dans le cylindre à l'injection,
+			il est théoriquement possible de fixer une borne maximale à la quantité de carburant utilisée par cycle.
+
+	
+	Résultats de recherche documentaire: 14.7:1 en rapport théorique air:carburant, 18:1 en rapport pratique : https://fr.m.wikipedia.org/wiki/Carburateur
+	masse volumique de l'air ~= 1.3 kg/m^3
+
+-Recherche portant sur les dimensions d'un cylindre.-----------------------------------------------------------------------------------------------
+
+		( https://www.bmw.be/fr/all-models/2-series/gran-coupe/2019/caracteristiques-techniques-bmw-serie-2-gran-coupe.html# )
+		( https://fr.wikipedia.org/wiki/Cylindre_%28moteur%29 )
+
+	(1) 80,5 x 79,5 pour course/alésage en mm, rapport volumique de 9,8,  https://www.daciaduster.fr/specifications.php
+	(2) 94,6/82,0 pour course/alésage en mm, taux de compression de 11,0,  https://www.bmw.be/fr/all-models/x-series/X2/2017/caracteristiques-techniques.html#tab-0
+	
+	Vc (1) = 0.0015984 m^3 ; tau = 9.8 ; Vmax = 0.0017800364 m^3 ; Vmin = 0.0001816363 m^3 ; Qtot = 359.96 J
+	Vc (2) = 0.0019983 m^3 ; tau = 11  ; Vmax = 0.00219813 m^3   ; Vmin = 0.00019983 m^3   ; Qtot = 444.51 J
+
+	
